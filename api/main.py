@@ -9,7 +9,7 @@ from PIL import Image
 app = FastAPI()
 
 MODEL = tf.keras.models.load_model("../models/1.keras")
-CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
+CLASS_NAMES = ["Early Blight", "Healthy", "Late Blight"]
 
 
 def read_file_as_image(data) -> np.ndarray:
