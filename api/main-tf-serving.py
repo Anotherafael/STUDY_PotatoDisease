@@ -6,14 +6,27 @@ import tensorflow as tf
 import uvicorn
 from fastapi import FastAPI, File, UploadFile
 from PIL import Image
+from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # specific_version = "http://localhost:8502/v1/models/potatoes_model/versions/1:predict"
 endpoint = "http://localhost:8502/v1/models/potatoes_model:predict"
 
-# MODEL = tf.keras.models.load_model("../models/1.keras")
-CLASS_NAMES = ["Early Blight", "Late Blight", "Healthy"]
+CLASS_NAMES = ["Early Blight", "Healthy", "Late Blight"]
 
 
 def read_file_as_image(data) -> np.ndarray:
@@ -36,7 +49,7 @@ async def predict(
     prediction = np.array(response.json()["predictions"][0])
 
     predicted_class = CLASS_NAMES[np.argmax(prediction)]
-    confidence = np.max(prediction[0])
+    confidence = np.max(prediction)
 
     return {
         "class": predicted_class,
