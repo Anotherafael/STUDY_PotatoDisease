@@ -154,9 +154,14 @@ export const ImageUpload = () => {
       formData.append("file", selectedFile);
       let res = await axios({
         method: "post",
-        url: process.env.REACT_APP_API_URL,
+        url: process.env.REACT_APP_CLOUD_URL,
         data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Access-Control-Allow-Origin": "*",
+        },
       });
+      console.log(res.data);
       if (res.status === 200) {
         setData(res.data);
       }
