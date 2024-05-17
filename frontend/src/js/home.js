@@ -157,7 +157,6 @@ export const ImageUpload = () => {
         url: process.env.REACT_APP_CLOUD_URL,
         data: formData,
         headers: {
-          "Content-Type": "multipart/form-data",
           "Access-Control-Allow-Origin": "*",
         },
       });
