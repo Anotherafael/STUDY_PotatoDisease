@@ -11,8 +11,9 @@ from starlette.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "http://localhost",
-    "http://localhost:3000",
+    #     "http://localhost",
+    #     "http://localhost:3000",
+    "*"
 ]
 
 app.add_middleware(
@@ -23,8 +24,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# specific_version = "http://localhost:8502/v1/models/potatoes_model/versions/1:predict"
-endpoint = "http://localhost:8502/v1/models/potatoes_model:predict"
+# specific_version = "http://tensorflow:8502/v1/models/potatoes_model/versions/1:predict"
+endpoint = "http://tensorflow:8502/v1/models/potatoes_model:predict"
 
 CLASS_NAMES = ["Early Blight", "Healthy", "Late Blight"]
 
@@ -32,6 +33,11 @@ CLASS_NAMES = ["Early Blight", "Healthy", "Late Blight"]
 def read_file_as_image(data) -> np.ndarray:
     image = np.array(Image.open(BytesIO(data)))
     return image
+
+
+@app.get("/ping")
+async def ping():
+    return {"ping": "pong"}
 
 
 @app.post("/predict")
@@ -58,4 +64,4 @@ async def predict(
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8080)
+    uvicorn.run(app, host="0.0.0.0", port=8080)

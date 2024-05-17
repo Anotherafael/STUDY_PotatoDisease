@@ -154,7 +154,7 @@ export const ImageUpload = () => {
       formData.append("file", selectedFile);
       let res = await axios({
         method: "post",
-        url: process.env.REACT_APP_CLOUD_URL,
+        url: process.env.REACT_APP_API_URL,
         data: formData,
         headers: {
           "Access-Control-Allow-Origin": "*",
