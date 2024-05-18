@@ -1,30 +1,23 @@
 ## Potato Leaf Disease Classification
 
-The goal of this research is to create a convolutional neural network (CNN) that can categorize illnesses of potato leaves. Accurately determining if a potato leaf is healthy, blight-affected early or late is the aim. It consists of a web application for real-time leaf classification and a TensorFlow model trained on the potato leaf disease dataset.
+The research uses a Convolutional Neural Network (CNN) model constructed with TensorFlow to categorise illnesses of the potato leaf. The [Plant Village](https://www.kaggle.com/datasets/arjuntejaswi/plant-village) dataset on Kaggle was used to train and test the model, which can differentiate between healthy and diseased potato leaves. The CNN is optimised for image classification using the proper loss functions and optimizers thanks to preprocessing, which also guarantees adequate training and testing sets.
 
-### Project Components
+A real-time prediction backend utilising the trained TensorFlow model is offered by FastAPI. Endpoints manage the uploading of images and provide categorization results, while Uvicorn effectively manages the FastAPI programme. TensorFlow Serving and the FastAPI backend are created in distinct containers by Docker, which containerises the services. Docker Compose is used to manage the network and facilitate seamless communication.
 
-#### Convolutional Neural Network (CNN)
+The ReactJS front-end application provides an easy-to-use interface for classifying diseases, enabling users to upload photos and examine the results. Along with being containerised and deployed with the backend services, this frontend communicates with the FastAPI backend to make predictions.
 
-TensorFlow is used in a Jupyter Notebook inside of VSCode to build the CNN model. It learns and divides potato leaf photos into three groups: healthy, early blight, and late blight. It does this by utilizing deep learning algorithms. The notebook contains specifics on the model's construction and training procedure.
+<center>
 
-#### Web Application
+![Web demonstration](assets/potato-disease-home-page.gif "Web demonstration")
 
-To input photos of potato leaves and get predictions from the trained CNN model, use the web application's intuitive interface. It shows the probability score for each class as well as the expected class (healthy, early blight, or late blight). With this application, users may evaluate the health of potato plants rapidly.
-
-#### Deployment on Google Cloud
-
-For scalability and accessibility, the trained TensorFlow CNN model is hosted on Google Cloud Platform (GCP). Its smooth interaction with the online application is made possible by its storage in a cloud storage bucket. The deployment procedure makes sure that cloud resources are used effectively for jobs involving inference and prediction.
-
-#### API Server
-
-To enable communication between the web application and the TensorFlow model that is installed on GCP, an API server is put into place. This server receives incoming picture requests, runs the CNN model on them, and instantly provides the web application with the classified images. It guarantees the leaf classification system's dependability and seamless operation.
+</center>
 
 ### Technologies Used
-- Python
-- TensorFlow
-- Jupyter Notebook in VS Code
-- Fastapi
-- HTML/CSS/JavaScript
-- Google Cloud Storage
-- Google Cloud Platform (GCP)
+
+- **Python:** For backend development and machine learning model.
+- **TensorFlow:** For building and training the CNN model.
+- **TensorFlow Serving:** For serving the trained model.
+- **FastAPI:** For creating the backend API.
+- **Uvicorn:** ASGI server for the FastAPI application.
+- **Docker:** For containerizing the services.
+- **ReactJS:** For building the frontend application.
