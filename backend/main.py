@@ -11,9 +11,7 @@ from starlette.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    #     "http://localhost",
-    #     "http://localhost:3000",
-    "*"
+    "*",
 ]
 
 app.add_middleware(
@@ -35,9 +33,9 @@ def read_file_as_image(data) -> np.ndarray:
     return image
 
 
-@app.get("/ping")
-async def ping():
-    return {"ping": "pong"}
+@app.get("/")
+async def root():
+    return {"Hello": "World"}
 
 
 @app.post("/predict")

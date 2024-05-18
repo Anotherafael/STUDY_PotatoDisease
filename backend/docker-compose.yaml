@@ -5,11 +5,11 @@ services:
     ports:
       - '8502:8502'
     volumes:
-      - .:/potato_disease
+      - .:/backend
     command:
       - --rest_api_port=8502
-      - --model_config_file=/potato_disease/models.config
-  backend:
+      - --model_config_file=/backend/models.config
+  api:
     build:
       context: .
       dockerfile: Dockerfile
@@ -17,4 +17,3 @@ services:
       - '8080:8080'
     depends_on:
       - tensorflow
-    
