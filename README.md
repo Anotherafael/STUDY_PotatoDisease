@@ -1,6 +1,6 @@
 ## Potato Leaf Disease Classification
 
-The research uses a Convolutional Neural Network (CNN) model constructed with TensorFlow to categorise illnesses of the potato leaf. The [Plant Village](https://www.kaggle.com/datasets/arjuntejaswi/plant-village) dataset on Kaggle was used to train and test the model, which can differentiate between healthy and diseased potato leaves. The CNN is optimised for image classification using the proper loss functions and optimizers thanks to preprocessing, which also guarantees adequate training and testing sets.
+This project uses a Convolutional Neural Network (CNN) model constructed with TensorFlow to categorise illnesses of the potato leaf. The [Plant Village](https://www.kaggle.com/datasets/arjuntejaswi/plant-village) dataset on Kaggle was used to train and test the model, which can differentiate between healthy and diseased potato leaves. The CNN is optimised for image classification using the proper loss functions and optimizers thanks to preprocessing, which also guarantees adequate training and testing sets.
 
 A real-time prediction backend utilising the trained TensorFlow model is offered by FastAPI. Endpoints manage the uploading of images and provide categorization results, while Uvicorn effectively manages the FastAPI programme. TensorFlow Serving and the FastAPI backend are created in distinct containers by Docker, which containerises the services. Docker Compose is used to manage the network and facilitate seamless communication.
 
