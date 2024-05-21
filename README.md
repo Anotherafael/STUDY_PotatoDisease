@@ -1,23 +1,23 @@
-## Potato Leaf Disease Classification
+## Classificação de Doenças em Folhas de Batata
 
-This project uses a Convolutional Neural Network (CNN) model constructed with TensorFlow to categorise illnesses of the potato leaf. The [Plant Village](https://www.kaggle.com/datasets/arjuntejaswi/plant-village) dataset on Kaggle was used to train and test the model, which can differentiate between healthy and diseased potato leaves. The CNN is optimised for image classification using the proper loss functions and optimizers thanks to preprocessing, which also guarantees adequate training and testing sets.
+Este projeto consiste na construção de um modelo de Rede Neural Convolucional (CNN) criado com o TensorFlow para categorizar doenças nas folhas de batata. O modelo que pode distinguir entre folhas de batata saudáveis e doentes foi treinado e testado usando o conjunto de dados [Plant Village](https://www.kaggle.com/datasets/arjuntejaswi/plant-village) do Kaggle. O pré-processamento, que também garante conjuntos de treinamento e teste adequados, permite que a CNN seja otimizada para classificação de imagens usando as funções de perda e otimizadores adequados.
 
-A real-time prediction backend utilising the trained TensorFlow model is offered by FastAPI. Endpoints manage the uploading of images and provide categorization results, while Uvicorn effectively manages the FastAPI programme. TensorFlow Serving and the FastAPI backend are created in distinct containers by Docker, which containerises the services. Docker Compose is used to manage the network and facilitate seamless communication.
+O FastAPI fornece um backend de previsão em tempo real que usa o modelo TensorFlow treinado. Enquanto o Uvicorn administra o aplicativo FastAPI, os Endpoints controlam o upload de imagens e os resultados da categorização. O Docker containeriza os serviços, criando o TensorFlow Serving e o backend FastAPI em contêineres diferentes. O Docker Compose facilita a comunicação contínua e gerencia a rede.
 
-The ReactJS front-end application provides an easy-to-use interface for classifying diseases, enabling users to upload photos and examine the results. Along with being containerised and deployed with the backend services, this frontend communicates with the FastAPI backend to make predictions.
+A aplicação front-end baseada em ReactJS fornece uma interface fácil de usar para a classificação de doenças que permite que os usuários coloquem fotos e analisem os resultados. Esta interface funciona com o backend FastAPI para realizar previsões e é containerizada e implantada com os serviços de backend.
 
 <center>
 
-![Web demonstration](assets/potato-disease-home-page.gif "Web demonstration")
+![Demonstração Web](assets/potato-disease-home-page.gif "Demonstração Web")
 
 </center>
 
-### Technologies Used
+### Tecnologias Utilizadas
 
-- **Python:** For backend development and machine learning model.
-- **TensorFlow:** For building and training the CNN model.
-- **TensorFlow Serving:** For serving the trained model.
-- **FastAPI:** For creating the backend API.
-- **Uvicorn:** ASGI server for the FastAPI application.
-- **Docker:** For containerizing the services.
-- **ReactJS:** For building the frontend application.
+- **Python:** desenvolvimento backend e construção do modelo de aprendizado de máquina.
+- **TensorFlow:** construir e treinar o modelo CNN.
+- **TensorFlow Serving:** servir o modelo treinado.
+- **FastAPI:** criar a API backend.
+- **Uvicorn:** servidor ASGI para a aplicação FastAPI.
+- **Docker:** containerizar os serviços.
+- **ReactJS:** construir a aplicação frontend.
